@@ -109,33 +109,21 @@ yesBtn.addEventListener("click", (e) => {
 
 // ----------------------------------
 
-// Google Form submit setup
 const form = document.getElementById("answer-form");
 const input = document.getElementById("answer-input");
 
-// YES buttons (send answer + go next)
+// YES buttons
 document.querySelectorAll(".question-card .next-btn").forEach((btn, index) => {
   btn.addEventListener("click", () => {
     input.value = `Yes - Question ${index + 1}`;
-    sendAnswer();
+    form.submit();
   });
 });
 
-// NO buttons (send answer ONLY, do NOT navigate)
+// NO buttons
 document.querySelectorAll(".question-card .prev-btn").forEach((btn, index) => {
   btn.addEventListener("click", () => {
     input.value = `No - Question ${index + 1}`;
-    sendAnswer();
+    form.submit();
   });
 });
-
-function sendAnswer() {
-  fetch(
-    "https://docs.google.com/forms/d/e/1QwxSnv1F2hlDSjX-5PYuvFkn_Jei4mG-GH6l6vdFzCw/formResponse",
-    {
-      method: "POST",
-      mode: "no-cors",
-      body: new FormData(form),
-    },
-  );
-}

@@ -293,14 +293,25 @@
       </div>
     </div>
 
+    <!-- Question 1 -->
     <div class="card question-card">
       <h1>One last question</h1>
 
       <p>Will you be mine?</p>
 
       <!-- hidden form for Google Forms submission -->
-      <!-- Question 1 -->
-      <form id="answer-form">
+      <!-- <form id="answer-form">
+        <input type="hidden" name="entry.771220492" id="answer-input" />
+      </form> -->
+
+      <iframe name="hidden_iframe" style="display: none"></iframe>
+
+      <form
+        id="answer-form"
+        action="https://docs.google.com/forms/d/e/1QwxSnv1F2hlDSjX-5PYuvFkn_Jei4mG-GH6l6vdFzCw/formResponse"
+        method="POST"
+        target="hidden_iframe"
+      >
         <input type="hidden" name="entry.771220492" id="answer-input" />
       </form>
 
@@ -401,3 +412,5 @@
     <script src="app.js"></script>
   </body>
 </html>
+
+<!-- https://docs.google.com/forms/d/e/1FAIpQLSfchqRg8NA7DPGJ05E-CVdvFfSfV-WQdQiDkv7Zvtxx_A1bDg/viewform?usp=pp_url&=yes -->
