@@ -1,0 +1,198 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb);
+  background-size: 600% 600%;
+  animation: bgMove 12s ease infinite;
+  font-family: Arial, sans-serif;
+}
+
+/* Home button */
+.home-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 42px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Card */
+.card {
+  position: absolute;
+  background: #fff;
+  padding: 36px 44px;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+  /* IMPORTANT: keep slide animation working */
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease;
+
+  /* allow body click on first card */
+  pointer-events: none;
+}
+
+.card.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Text */
+.card h1 {
+  margin: 0 0 14px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.card p {
+  margin: 6px 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+}
+
+/* Tap anywhere pulse */
+.card p:last-child {
+  margin-top: 18px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+/* Card actions */
+.card-actions {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Buttons */
+.card button {
+  pointer-events: auto;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.card button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Next button (single button card) */
+.next-btn {
+  margin-top: 24px;
+  padding: 12px 28px;
+}
+
+/* ONLY FIX: prev button size */
+.prev-btn {
+  padding: 12px 26px;
+  min-width: 120px;
+}
+
+/* FIX: make prev & next look balanced */
+.prev-btn,
+.next-btn {
+  min-width: 120px;
+  text-align: center;
+}
+
+/* optional: nicer spacing between them */
+.card-actions {
+  gap: 16px;
+}
+
+.card-actions .next-btn {
+  margin-top: 0;
+}
+
+/* Background animation */
+@keyframes bgMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/* iPhone / small screens fix */
+@media (max-width: 480px) {
+  .card {
+    padding: 24px 20px;
+    border-radius: 14px;
+    width: 80%;
+  }
+
+  .card h1 {
+    font-size: 1.6rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .card-actions {
+    gap: 12px;
+  }
+
+  .prev-btn,
+  .next-btn {
+    min-width: 110px;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  .home-btn {
+    width: 45px;
+    height: 40px;
+    font-size: 0.8rem;
+  }
+}
